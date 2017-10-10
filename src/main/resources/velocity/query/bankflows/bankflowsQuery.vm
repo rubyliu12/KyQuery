@@ -1,0 +1,58 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<form id="bankForm" method="post" resetOnSuccess=false>
+  #if($bankflowsIdCardQueryFailed)
+    <p class="bad notification">$msg.get("DTPQUERY_IDCARD_FAILED")</p>
+  #end
+  #if($errorResponse)
+    <p class="bad notification">$errorResponse</p>
+  #end
+  <h1>$msg.get("BANK_HEADING")</h1>
+  <div class="col-lg-6">
+    <label>$msg.get("BANK_NAME")</label>
+    <input type="text" name="name" placeholder="$msg.get("BANK_NAME")" value="$!bfQueryParams.name" required>
+  </div>
+  <div class="col-lg-6">
+    <label>$msg.get("BANK_IDNO")</label>
+    <input type="text" name="idno" placeholder="$msg.get("BANK_IDNO")" value="$!bfQueryParams.idno" required>
+  </div>
+  <div class="col-lg-6">
+    <label>$msg.get("BANK_MOBILE")</label>
+    <input type="tel" name="mobile" placeholder="$msg.get("BANK_MOBILE")" value="$!bfQueryParams.mobile" required>
+  </div>
+  <div class="col-lg-6">
+    <label>$msg.get("BANK_CARDNO")</label>
+    <input type="text" name="cardno" placeholder="$msg.get("BANK_CARDNO")" value="$!bfQueryParams.cardno" required>
+  </div>
+  <div class="col-lg-6">
+    <label>$msg.get("BANK_EMAIL")</label>
+    <input type="email" name="email" placeholder="$msg.get("BANK_EMAIL")" value="$!bfQueryParams.email">
+  </div>
+  #if($loginRedirect)
+    <input type="hidden" name="loginRedirect" value="$loginRedirect">
+  #end
+  <input type="submit" value="$msg.get("DTP_BUTTON_QUEEY")">
+</form>
+  #if($bankflowsList)
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th colspan="3">$msg.get("BANK_CARDNO")</th>
+        <th colspan="3">$msg.get("BANK_TRANSAMOUNT")</th>
+        <th colspan="3">$msg.get("BANK_TRANSTIME")</th>
+      </tr>
+      </thead>
+      <tbody>
+        #foreach($bankflows in $bankflowsList)
+        <tr>
+          <td colspan="3">$bankflows.getCardNo()</td>
+          <td colspan="3">$bankflows.getTransamount()</td>
+          <td colspan="3">$bankflows.getTranstime()</td>
+        </tr>
+        #end
+      </tbody>
+    </table>
+  </div>
+  #end
+#end

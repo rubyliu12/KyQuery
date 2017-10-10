@@ -1,0 +1,81 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<form id="queryForm" method="post" target="_self">
+  #if($dtpIdCardQueryFailed)
+    <p class="bad notification">$msg.get("DTPQUERY_IDCARD_FAILED")</p>
+  #end
+  #if($errorResponse)
+    <p class="bad notification">$errorResponse</p>
+  #end
+  <h1>$msg.get("DTP_HEADING")</h1>
+  <label>$msg.get("DTP_NAME")</label>
+  <input type="text" name="name" placeholder="$msg.get("DTP_NAME")" value="" required>
+  <label>$msg.get("DTP_IDNO")</label>
+  <input type="text" name="idno" placeholder="$msg.get("DTP_IDNO")" value="" required>
+  #if($loginRedirect)
+    <input type="hidden" name="loginRedirect" value="$loginRedirect">
+  #end
+  <input type="submit" value="$msg.get("DTP_BUTTON_QUEEY")">
+</form>
+  #if($dtpInfo)
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <tbody>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_NAME")</th>
+        <td colspan="3">$dtpInfo.getName()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_IDNO")</th>
+        <td colspan="3">$dtpInfo.getIdNo()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_IDEXISTS")</th>
+        <td colspan="3">$dtpInfo.getIdexists()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_NAMEMATCHED")</th>
+        <td colspan="3">$dtpInfo.getNamematched()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_BIRTHDAY")</th>
+        <td colspan="3">$dtpInfo.getBirthday()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_EDUCATION")</th>
+        <td colspan="3">$dtpInfo.getEducation()</td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_GENDER")</th>
+        <td colspan="3">$dtpInfo.getGender()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_NATIONALITY")</th>
+        <td colspan="3">$dtpInfo.getNationality()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_MARITALSTATUS")</th>
+        <td colspan="3">$dtpInfo.getMaritalstatus()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_BIRTHPLACE")</th>
+        <td colspan="3">$dtpInfo.getBirthplace()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_DISTRICT")</th>
+        <td colspan="3">$dtpInfo.getDistrict()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_LOCATION")</th>
+        <td colspan="3">$dtpInfo.getLocation()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_DEPARTMENT")</th>
+        <td colspan="3">$dtpInfo.getDepartment()</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  #end
+#end

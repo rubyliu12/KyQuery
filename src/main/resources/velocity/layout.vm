@@ -1,0 +1,84 @@
+#macro(mainLayout)
+<!doctype html>
+<head>
+  <title>$msg.get("COMMON_TITLE")</title>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/main.css">
+##  <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="/css/buttons.dataTables.min.css">
+  <link rel="icon" href="/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" language="javascript" src="/js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" language="javascript"
+          src="/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" language="javascript" src="/js/datatables.min.js"></script>
+  <script type="text/javascript" language="javascript"
+          src="/js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" language="javascript"
+          src="/js/jszip.min.js"></script>
+  <script type="text/javascript" language="javascript"
+          src="/js/buttons.html5.min.js"></script>
+  <script type="text/javascript" language="javascript"
+          src="/js/dataTables.buttons.min.js"></script>
+
+
+</head>
+<body>
+<header>
+  <nav>
+    <a href="$WebPath.getINDEX()"><img id="logo" src="/img/logo.png" alt="$msg.get("COMMON_TITLE")"></a>
+    <ul id="menu">
+      #if($currentUser)
+      ##        户籍信息
+      ##        <li class="dropdown">
+      ##          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+      ##             aria-haspopup="true" aria-expanded="false">$msg.get("DTPINFO")<span
+      ##              class="caret"></span></a>
+      ##          <ul class="dropdown-menu">
+      ##            <li><a href="$WebPath.getDTP_QUERY()">$msg.get("COMMON_NAV_DTPQUERY")</a>
+      ##            </li>
+      ##            <li><a href="$WebPath.getDTP_QUERY_HISTORY()">$msg.get(
+      ##              "COMMON_NAV_DTPQUERYHISTORY")</a></li>
+      ##          </ul>
+      ##        </li>
+
+        <li><a href="$WebPath.getBQS_IVS()">$msg.get("BQS_IVS")</a>
+        </li>
+      ##        银行流水
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+             aria-haspopup="true" aria-expanded="false">$msg.get("BANK_FLOWS")<span
+              class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="$WebPath.getBANK_QUERY()">$msg.get("COMMON_NAV__BANK")</a>
+            </li>
+            <li><a href="$WebPath.getBANK_QUERY_HISTORY()">$msg.get(
+              "COMMON_NAV_BANK_HISTORY")</a></li>
+            <li><a href="$WebPath.getADVANCED_BANKCARD_FLOWS()">$msg.get(
+              "ADVANCED_BANKCARD_FLOWS_QUERY")</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <form method="post" action="$WebPath.getLOGOUT()">
+            <button id="logout">$msg.get("COMMON_NAV_LOGOUT")</button>
+          </form>
+        </li>
+      #else
+        <li><a href="$WebPath.getLOGIN()"">$msg.get("COMMON_NAV_LOGIN")</a></li>
+      #end
+    </ul>
+  </nav>
+</header>
+<main>
+  <div id="content">
+    $bodyContent
+  </div>
+</main>
+<footer>
+  $msg.get("COMMON_FOOTER_TEXT")
+</footer>
+</body>
+</html>
+#end

@@ -1,0 +1,26 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+  #if($bankflowsList)
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th colspan="3">$msg.get("BANK_CARDNO")</th>
+        <th colspan="3">$msg.get("BANK_TRANSAMOUNT")</th>
+        <th colspan="3">$msg.get("BANK_TRANSTIME")</th>
+      </tr>
+      </thead>
+      <tbody>
+        #foreach($bankflows in $bankflowsList)
+        <tr>
+          <td colspan="3">$bankflows.getCardNo()</td>
+          <td colspan="3">$bankflows.getTransamount()</td>
+          <td colspan="3">$bankflows.getTranstime()</td>
+        </tr>
+        #end
+      </tbody>
+    </table>
+  </div>
+  <a class="back" href="$WebPath.getBANK_QUERY_HISTORY()">$msg.get("HISTORY_BACK")</a>
+  #end
+#end

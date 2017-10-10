@@ -1,0 +1,38 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<h1>$msg.get("COMMON_NAV_DTPQUERYHISTORY")</h1>
+<hr/>
+<table id="history" class="table table-striped table-bordered" cellspacing="0" width="100%">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>$msg.get("DTPINFO_NAME")</th>
+    <th>$msg.get("DTPINFO_IDNO")</th>
+    <th>$msg.get("HISTORY_QUERYTIME")</th>
+    <th>$msg.get("DTPHISTORY_OPERATOR")</th>
+  </tr>
+  </thead>
+##  <tfoot>
+##  <tr>
+##    <th>ID</th>
+##    <th>$msg.get("DTPINFO_NAME")</th>
+##    <th>$msg.get("DTPINFO_IDNO")</th>
+##    <th>$msg.get("DTPHISTORY_OPERATOR")</th>
+##  </tr>
+##  </tfoot>
+  <tbody>
+    #foreach($history in $historyList)
+    <tr>
+      <td>$history.get("id").toString()</td>
+      <td>$history.get("name").toString()</td>
+      <td>$history.get("idno").toString()</td>
+      <td>$history.get("querytime").toString()</td>
+      <td><a href="$WebPath.getDTP_QUERY_HISTORY()$history.get("id")/$history.get("idno")"><span
+          type="submit" class="glyphicon glyphicon-list-alt" aria-hidden="true"
+          onclick="hide(); return false"></a></span></td>
+    </tr>
+    #end
+  </tbody>
+</table>
+<script type="text/javascript" language="javascript" src="/js/kyQueryHistory.js"></script>
+#end

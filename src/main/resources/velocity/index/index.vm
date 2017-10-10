@@ -1,0 +1,16 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<h3>$msg.get("INDEX_HEADING")</h3>
+##  <hr>
+##<ul>
+##  <a class="btn btn-default" href="$WebPath.getDTP_QUERY()" role="button">$msg.get("COMMON_NAV_DTPQUERY")</a>
+##  <a class="btn btn-default" href="$WebPath.getDTP_QUERY_HISTORY()" role="button">$msg.get("COMMON_NAV_DTPQUERYHISTORY")</a>
+##  <a class="btn btn-default" href="$WebPath.getBANK_QUERY()" role="button">$msg.get("COMMON_NAV__BANK")</a>
+##  <a class="btn btn-default" href="#" role="button">$msg.get("COMMON_NAV_BANK_HISTORY")</a>
+##</ul>
+<hr>
+<h3>$msg.get("INDEX_SERVICE_PROVIDER")</h3>
+<ul>
+  <li>$msg.get("INDEX_SERVICE_PROVIDER_YYX")</li>
+</ul>
+#end

@@ -1,0 +1,65 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+  #if($historyDetail)
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <tbody>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_NAME")</th>
+        <td colspan="3">$historyDetail.getName()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_IDNO")</th>
+        <td colspan="3">$historyDetail.getIdNo()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_IDEXISTS")</th>
+        <td colspan="3">$historyDetail.getIdexists()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_NAMEMATCHED")</th>
+        <td colspan="3">$historyDetail.getNamematched()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_BIRTHDAY")</th>
+        <td colspan="3">$historyDetail.getBirthday()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_EDUCATION")</th>
+        <td colspan="3">$historyDetail.getEducation()</td>
+      </tr>
+
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_GENDER")</th>
+        <td colspan="3">$historyDetail.getGender()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_NATIONALITY")</th>
+        <td colspan="3">$historyDetail.getNationality()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_MARITALSTATUS")</th>
+        <td colspan="3">$historyDetail.getMaritalstatus()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_BIRTHPLACE")</th>
+        <td colspan="3">$historyDetail.getBirthplace()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_DISTRICT")</th>
+        <td colspan="3">$historyDetail.getDistrict()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_LOCATION")</th>
+        <td colspan="3">$historyDetail.getLocation()</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">$msg.get("DTPINFO_DEPARTMENT")</th>
+        <td colspan="3">$historyDetail.getDepartment()</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+    <a class="back" href="$WebPath.getDTP_QUERY_HISTORY()">$msg.get("HISTORY_BACK")</a>
+  #end
+#end

@@ -1,0 +1,47 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<form class="form-inline" method="post" enctype="multipart/form-data">
+  #if($error_type)
+    <p class="bad notification">$msg.get("UPLOAD_FILETYPE_ERROR")</p>
+  #end
+  <input type="file" class="form-control mb-2 mr-sm-2 mb-sm-0" name="uploaded_file">
+  <button class="btn btn-primary left">$msg.get("UPLOAD_FILE")</button>
+</form>
+<hr>
+
+#if($rsList)
+<script type="text/javascript" language="javascript" src="/js/ivsQuery.js"></script>
+#end
+<table id="ivsquery" class="table table-striped table-bordered display nowrap" cellspacing="0" width="100%">
+  #if($rsList)
+    <thead>
+    <tr>
+      #foreach($h in $header)
+        <th>$h</th>
+      #end
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+      #foreach($h in $header)
+        <th>$h</th>
+      #end
+    </tr>
+    </tfoot>
+    <tbody>
+      #foreach($rs in $rsList)
+      <tr>
+        #foreach($r in $rs.values())
+          <td>
+            $r
+          </td>
+        #end
+      </tr>
+      #end
+    </tbody>
+
+  #end
+</table>
+
+
+#end
