@@ -2,11 +2,6 @@ package app.query.baiqishi;
 
 import app.util.tools.ConfigUtil;
 import app.util.tools.JsonUtil;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.google.common.collect.ImmutableMap;
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,13 +9,13 @@ import java.util.HashMap;
 import java.util.Map;
 import net.sf.json.JSONObject;
 
-public class BQSIVSQuery {
+public class BqsIvsQuery {
   private static ConfigUtil configUtil = ConfigUtil.getInstance();
 
   /**
-   * IVS查询
+   * IVS查询.
    * @param queryInfo net.sf.JSONObject
-   * @return
+   * @return String result
    */
   public static String ivsQuery(JSONObject queryInfo) {
     Invoker.init();
@@ -51,13 +46,13 @@ public class BQSIVSQuery {
   }
 
   /**
-   * IVS查询
-   * @param bp BQSIVSQueryParameters Object
-   * @return
+   * IVS查询.
+   * @param bp BqsIvsQueryParameters Object
+   * @return String result
    */
-  public static String ivsQuery(BQSIVSQueryParameters bp) {
+  public static String ivsQuery(BqsIvsQueryParameters bp) {
     String result = null;
-    //BQSIVSQueryParameters Object to Map
+    //BqsIvsQueryParameters Object to Map
     Map<String, Object> query = JsonUtil.toMap(bp);
     try {
       result = Invoker.invoke(query, configUtil.getValue("ivs_url"));

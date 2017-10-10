@@ -154,5 +154,5 @@ public class HttpClient {
     }
     return SignatureData.signContent(signStr.toString());
   }
-  
+
 }

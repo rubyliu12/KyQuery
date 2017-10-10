@@ -6,10 +6,10 @@ import lombok.Builder.Default;
 import lombok.NonNull;
 
 /**
- * 白骑士IVS查询参数
+ * 白骑士IVS查询参数.
  */
 @Builder
-public class BQSIVSQueryParameters {
+public class BqsIvsQueryParameters {
   private static ConfigUtil configUtil = ConfigUtil.getInstance();
 
 

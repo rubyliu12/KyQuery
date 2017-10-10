@@ -11,7 +11,7 @@ public class Test {
 //    jsonObject.put("mobile", "13883113282");
 
 
-    BQSIVSQueryParameters bp = BQSIVSQueryParameters.builder().certNo("510225196208238938").name("周开万").mobile("13883113282").build();
-    BQSIVSQuery.ivsQuery(bp);
+    BqsIvsQueryParameters bp = BqsIvsQueryParameters.builder().certNo("510225196208238938").name("周开万").mobile("13883113282").build();
+    BqsIvsQuery.ivsQuery(bp);
   }
 }

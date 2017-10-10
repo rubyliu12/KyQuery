@@ -9,7 +9,7 @@ import static spark.Spark.staticFiles;
 
 import app.index.IndexController;
 import app.login.LoginController;
-import app.query.baiqishi.Controller.IVSController;
+import app.query.baiqishi.controller.IvsController;
 import app.query.bankflows.AdvancedBankCardFlowsController;
 import app.query.bankflows.BankFlowsQueryController;
 import app.query.bankflows.BankflowsHistoryController;
@@ -77,8 +77,8 @@ public class Application {
     post(Web.ADVANCED_BANKCARD_FLOWS, AdvancedBankCardFlowsController.advancedBankCardFlows);
     post(Path.Web.LOGOUT, LoginController.handleLogoutPost);
     //白骑士查询
-    get(Web.BQS_IVS, IVSController.serverIvsQuery);
-    post(Web.BQS_IVS, IVSController.ivsQueryExcel);
+    get(Web.BQS_IVS, IvsController.serverIvsQuery);
+    post(Web.BQS_IVS, IvsController.ivsQueryExcel);
     //not found page
     get("*", ViewUtil.notFound);
 
