@@ -36,6 +36,13 @@ public class RequestUtil {
     return request.queryParams("email");
   }
 
+  public static String getQueryCertdNo(Request request) {
+    return request.queryParams("certNo");
+  }
+
+  public static String getQueryBankCardNo(Request request) {
+    return request.queryParams("bankCardNo");
+  }
 
   public static String getId(Request request) {
     return request.params("id");

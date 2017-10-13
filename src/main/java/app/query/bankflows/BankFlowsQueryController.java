@@ -30,7 +30,7 @@ import spark.Route;
 public class BankFlowsQueryController {
 
   public static Route serverBankFlows = (Request request, Response response) -> {
-    //    LoginController.ensureUserIsLoggedIn(request, response);
+    LoginController.ensureUserIsLoggedIn(request, response);
     Map<String, Object> model = new HashMap<>();
     model.put("bfQueryParams",
         ImmutableMap.builder().put("name", "").put("cardno", "").put("idno", "").put("mobile", "")

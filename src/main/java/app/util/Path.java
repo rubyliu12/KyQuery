@@ -30,6 +30,8 @@ public class Path {
     public static final String BANK_QUERY_DETAIL = "/bfhistory/:id/:idno/";
     @Getter
     public static final String BQS_IVS = "/bqsivs/";
+    @Getter
+    public static final String BQS_IVS_SINGLE = "/bqsivssingle/";
   }
 
   public static class Template {
@@ -45,6 +47,7 @@ public class Path {
     public static final String BANK_QUERY_HISTORY = "/velocity/query/bankflows/bankflowsHistory.vm";
     public static final String BANK_QUERY_HISTORY_DETAIL = "/velocity/query/bankflows/bankflowsDetail.vm";
     public static final String BQS_IVS = "/velocity/query/baiqishi/ivsQuery.vm";
+    public static final String BQS_IVS_SINGLE = "/velocity/query/baiqishi/singleIvsQuery.vm";
   }
 
 }

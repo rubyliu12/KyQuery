@@ -10,6 +10,7 @@ import static spark.Spark.staticFiles;
 import app.index.IndexController;
 import app.login.LoginController;
 import app.query.baiqishi.controller.IvsController;
+import app.query.baiqishi.controller.SingleIvsQueryController;
 import app.query.bankflows.AdvancedBankCardFlowsController;
 import app.query.bankflows.BankFlowsQueryController;
 import app.query.bankflows.BankflowsHistoryController;
@@ -79,6 +80,9 @@ public class Application {
     //白骑士查询
     get(Web.BQS_IVS, IvsController.serverIvsQuery);
     post(Web.BQS_IVS, IvsController.ivsQueryExcel);
+
+    get(Web.BQS_IVS_SINGLE, SingleIvsQueryController.serverIvsQuery);
+    post(Web.BQS_IVS_SINGLE, SingleIvsQueryController.singleIvsQuery);
     //not found page
     get("*", ViewUtil.notFound);
 
