@@ -61,7 +61,14 @@ public class SingleIvsQueryController {
       model.put("errorResponse", "请联系开发人员");
       return ViewUtil.render(request, model, Template.BQS_IVS_SINGLE);
     }
+    if("Accept".equals(resultJs.get("finalDecision"))) {
+      resultJs.put("result","通过");
 
+    } else if ("Review".equals(resultJs.get("finalDecision"))) {
+      resultJs.put("result", "审核，低风险名单有击中，建议人工核实");
+    } else {
+      resultJs.put("result", "拒绝，高风险名单有击中，建议拒绝");
+    }
     model.put("ivsResult", resultJs);
     return ViewUtil.render(request, model, Template.BQS_IVS_SINGLE);
   };
