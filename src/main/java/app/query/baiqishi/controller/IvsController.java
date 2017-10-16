@@ -57,8 +57,8 @@ public class IvsController {
     JSONArray result = new JSONArray();
     JSONObject header = JSONObject.fromObject(uploadInfo.get(0));
     //添加新的列名
-    header.put("result", "审核结果");
-    header.put("strategySet", "拒绝原因");
+    header.put("result", "白骑士查询结果");
+    header.put("strategySet", "白骑士风险原因");
 
     //result.add(0, header);
     while (queryLists.hasNext()) {

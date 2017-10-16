@@ -1,14 +1,17 @@
 package app.util;
 
-import com.google.common.collect.Lists;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import javax.servlet.http.Part;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang.time.DateFormatUtils;
+import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -17,13 +20,21 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class HandleExcel {
+
   public String handleExcelUsePOI(Part file) throws IOException {
     InputStream inputStream = file.getInputStream();
     Workbook workbook = new XSSFWorkbook(inputStream);
     Sheet sheet = workbook.getSheetAt(0);
     Iterator<Row> iterator = sheet.iterator();
     JSONArray jObject = new JSONArray();
-    String[] indexes = {"aid", "cid", "name", "certNo", "bankCardNo", "mobile"};
+    String[] indexes = {"A", "B", "C", "D", "E", "F", "G", "H", "name", "mobile", "K", "L", "M",
+        "N", "O",
+        "certNo", "Q", "bankCardNo", "S", "T", "U", "address", "W", "X", "Y", "Z", "AA", "AB", "AC",
+        "AD", "AE", "AF",
+        "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "AS", "AT", "AU",
+        "AV", "AW", "AX", "AY", "AZ", "BA", "BB", "BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ",
+        "BK", "BL", "BM", "BN", "BO", "BP", "BQ", "BR", "BS", "BT", "BU", "BV", "BW", "BX", "BY",
+        "BZ", "CA", "CB", "CC", "CD", "CE", "CF", "CG", "CH", "CI", "CJ", "CK", "CL"};
     JSONArray ids = JSONArray.fromObject(indexes);
 //    if (iterator.hasNext()) {
 //      iterator.next();
@@ -60,9 +71,9 @@ public class HandleExcel {
 
     if (type == Cell.CELL_TYPE_NUMERIC) {
 
-      if (cell.getCellStyle().getDataFormatString().contains("%")) {
-        return cell.getNumericCellValue() * 100;
-      }
+      //if (cell.getCellStyle().getDataFormatString().contains("%")) {
+      //  return cell.getNumericCellValue() * 100;
+      //}
 
       return numeric(cell);
     }
@@ -76,6 +87,8 @@ public class HandleExcel {
       }
     }
 
+
+
     return null;
 
   }
@@ -85,16 +98,17 @@ public class HandleExcel {
   }
 
   private Object numeric(Cell cell) {
-    if (HSSFDateUtil.isCellDateFormatted(cell)) {
 
-      return cell.getDateCellValue();
+    if (HSSFDateUtil.isCellDateFormatted(cell)) {
+      Date date = cell.getDateCellValue();
+      return DateFormatUtils.format(date, "yyyy-MM-dd");
     }
     return new DecimalFormat("#").format(cell.getNumericCellValue());
 //    return Double.valueOf(cell.getNumericCellValue());
   }
 
   public static String save(String fileName, String result) throws IOException {
-    String excelFileName = "src/main/resources/upload/"+fileName;//name of excel file
+    String excelFileName = "src/main/resources/upload/" + fileName;//name of excel file
 
     String sheetName = "查询结果";//name of sheet
 

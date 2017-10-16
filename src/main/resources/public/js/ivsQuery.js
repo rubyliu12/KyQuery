@@ -1,6 +1,13 @@
 $(document).ready(function () {
+
   $('#ivsquery').DataTable( {
     dom: 'Bfrtip',
+    columnDefs: [{
+      targets:[6,7,15,17],//指定哪几列
+      render: function(data){
+        return "\u200C" + data ;
+      }
+    }],
     buttons: [
       {
         extend:'copyHtml5',
@@ -9,10 +16,6 @@ $(document).ready(function () {
       {
         extend:'excelHtml5',
         text: '导出Excel'
-      },
-      {
-        extend:'csvHtml5',
-        text: '导出csv'
       }
     ],
     "language": {
