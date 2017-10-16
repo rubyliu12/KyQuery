@@ -62,7 +62,7 @@ public class SingleIvsQueryController {
       return ViewUtil.render(request, model, Template.BQS_IVS_SINGLE);
     }
     if("Accept".equals(resultJs.get("finalDecision"))) {
-      resultJs.put("result","通过");
+      resultJs.put("result","未查到风险名单和多头借贷信息");
 
     } else if ("Review".equals(resultJs.get("finalDecision"))) {
       resultJs.put("result", "审核，低风险名单有击中，建议人工核实");
