@@ -44,7 +44,7 @@ public class Filters {
     StatefulRedisConnection connection = RedisClient.create("redis://localhost").connect();
 
     Set<RequestLimitRule> rules = Collections
-        .singleton(RequestLimitRule.of(1, TimeUnit.MINUTES, 20)); // 50 request per minute, per key
+        .singleton(RequestLimitRule.of(1, TimeUnit.MINUTES, 20)); // 20 request per minute, per key
     RequestRateLimiter requestRateLimiter = new RedisSlidingWindowRequestRateLimiter(connection,
         rules);
 

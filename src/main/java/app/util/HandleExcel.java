@@ -11,7 +11,6 @@ import javax.servlet.http.Part;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.time.DateFormatUtils;
-import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -27,14 +26,15 @@ public class HandleExcel {
     Sheet sheet = workbook.getSheetAt(0);
     Iterator<Row> iterator = sheet.iterator();
     JSONArray jObject = new JSONArray();
-    String[] indexes = {"A", "B", "C", "D", "E", "F", "G", "H", "name", "mobile", "K", "L", "M",
-        "N", "O",
-        "certNo", "Q", "bankCardNo", "S", "T", "U", "address", "W", "X", "Y", "Z", "AA", "AB", "AC",
-        "AD", "AE", "AF",
+    String[] indexes = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "name",
+        "mobile", "O",
+        "P", "Q", "R", "S", "certNo", "U", "V", "bankCardNo", "X", "Y", "Z", "AA", "AB", "AC",
+        "address", "AE", "AF",
         "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "AS", "AT", "AU",
         "AV", "AW", "AX", "AY", "AZ", "BA", "BB", "BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ",
         "BK", "BL", "BM", "BN", "BO", "BP", "BQ", "BR", "BS", "BT", "BU", "BV", "BW", "BX", "BY",
-        "BZ", "CA", "CB", "CC", "CD", "CE", "CF", "CG", "CH", "CI", "CJ", "CK", "CL"};
+        "BZ", "CA", "CB", "CC", "CD", "CE", "CF", "CG", "CH", "CI", "CJ", "CK", "CL", "CM", "CN",
+        "CO", "CP", "CQ", "CR", "CS", "CT"};
     JSONArray ids = JSONArray.fromObject(indexes);
 //    if (iterator.hasNext()) {
 //      iterator.next();
@@ -86,8 +86,6 @@ public class HandleExcel {
           return cleanString(cell.getRichStringCellValue().toString());
       }
     }
-
-
 
     return null;
 
