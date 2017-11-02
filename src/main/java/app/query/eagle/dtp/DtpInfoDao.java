@@ -1,4 +1,4 @@
-package app.query.dtp;
+package app.query.eagle.dtp;
 
 import com.alibaba.fastjson.JSONObject;
 

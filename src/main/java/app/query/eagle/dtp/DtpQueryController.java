@@ -1,4 +1,4 @@
-package app.query.dtp;
+package app.query.eagle.dtp;
 
 import static app.Application.dtpInfoDao;
 import static app.util.RequestUtil.clientAcceptsHtml;

@@ -137,6 +137,32 @@ public class HttpClient {
   }
 
   /**
+   * 通过该接口获取被查询用户身份证号与姓名一致性，以及肖像核查。
+   * @param name
+   * @param idNo
+   * @return
+   */
+  public static JSONObject idVerify(String name, String idNo) {
+    Map<String, String> paramsr = new TreeMap<>();//使用TreeMap用于获取有序参数
+    String transactionId = "KYMC" + UUID.randomUUID().toString().replace("-", "");
+    String getToken = fetchToken();
+    paramsr.put("name", name);
+    paramsr.put("idNo", idNo);
+    paramsr.put("transactionId", transactionId);
+
+    String sign = getSingnature(paramsr, getToken);
+    String url = configUtil.getValue("yyx_idverify_uri");
+    String result = HttpRequest
+        .doPost(url, JSONObject.toJSONString(paramsr), sign, getToken, true);
+    JSONObject json = JSONObject.parseObject(result);
+    if (null != json && "0003".equals(json.getString("resCode"))) {
+      jedis.del("yyx_login_token");
+      idVerify(name, idNo);
+    }
+    return json;
+  }
+
+  /**
    * 获取参数签名 getSingnature:拼接参数生成数据签名. <br/>
    *
    * @since JDK 1.8

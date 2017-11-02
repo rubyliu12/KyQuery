@@ -1,4 +1,4 @@
-package app.query.bankflows;
+package app.query.eagle.bankflows;
 
 import static app.login.LoginController.ensureUserIsLoggedIn;
 import static app.util.RequestUtil.clientAcceptsHtml;

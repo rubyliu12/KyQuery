@@ -1,4 +1,4 @@
-package app.query.bankflows;
+package app.query.eagle.bankflows;
 
 import app.query.generated.tables.KyBankflowsLogs;
 import app.util.database.ScopedContext;

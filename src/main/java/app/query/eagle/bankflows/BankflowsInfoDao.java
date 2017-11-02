@@ -1,4 +1,4 @@
-package app.query.bankflows;
+package app.query.eagle.bankflows;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;

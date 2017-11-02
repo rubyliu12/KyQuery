@@ -9,12 +9,12 @@
 #* @vtlvariable name="dtpNameQueryFailed" type="java.lang.String" *#
 #* @vtlvariable name="authenticationSucceeded" type="java.lang.String" *#
 #* @vtlvariable name="loginRedirect" type="java.lang.String" *#
-#* @vtlvariable name="dtpInfo" type="app.query.dtp.DtpInfo" *#
-#* @vtlvariable name="historyDetail" type="app.query.dtp.DtpInfo" *#
+#* @vtlvariable name="dtpInfo" type="app.query.eagle.dtp.DtpInfo" *#
+#* @vtlvariable name="historyDetail" type="app.query.eagle.dtp.DtpInfo" *#
 #* @vtlvariable name="historyList" type="org.jooq.Result" *#
 #* @vtlvariable name="history" type="org.jooq.Record" *#
 #* @vtlvariable name="bankflowsHistoryList" type="org.jooq.Result" *#
 #* @vtlvariable name="bankflowsHistory" type="org.jooq.Record" *#
-#* @vtlvariable name="bankflowsList" type="java.lang.Iterable<app.query.bankflows.BankflowsInfo>" *#
-#* @vtlvariable name="bankflows" type="app.query.bankflows.BankflowsInfo" *#
+#* @vtlvariable name="bankflowsList" type="java.lang.Iterable<app.query.eagle.bankflows.BankflowsInfo>" *#
+#* @vtlvariable name="bankflows" type="app.query.eagle.bankflows.BankflowsInfo" *#
 #* @vtlvariable name="errorResponse" type="java.lang.String" *#

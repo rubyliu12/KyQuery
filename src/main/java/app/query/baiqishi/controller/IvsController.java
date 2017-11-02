@@ -69,14 +69,15 @@ public class IvsController {
         query.put("strategySet", ivsResult.get("strategySet"));
       } else if ("Accept".equals(ivsResult.get("finalDecision"))) {
         query.put("result", "未查到风险名单和多头借贷信息");
-        query.put("strategySet", "");
+        query.put("strategySet", ivsResult.get("strategySet"));
       } else {
         query.put("result", "审核，低风险名单有击中，建议人工核实");
         query.put("strategySet", "");
       }
       result.add(query);
     }
-    String outHref = handleExcel.save(upload.getSubmittedFileName(), result.toString());
+    //backup upload excel and result
+    handleExcel.save(upload.getSubmittedFileName(), result.toString());
     //handleExcel.save(handleExcel.handleExcelUsePOI(upload));
     if (clientAcceptsHtml(request)) {
       model.put("header", header);

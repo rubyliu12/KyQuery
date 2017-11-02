@@ -1,4 +1,4 @@
-package app.query.bankflows;
+package app.query.eagle.bankflows;
 
 import lombok.Data;
 

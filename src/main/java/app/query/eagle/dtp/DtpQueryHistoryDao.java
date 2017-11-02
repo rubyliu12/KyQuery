@@ -1,4 +1,4 @@
-package app.query.dtp;
+package app.query.eagle.dtp;
 
 import app.query.generated.tables.KyQueryLogs;
 import app.util.database.ScopedContext;

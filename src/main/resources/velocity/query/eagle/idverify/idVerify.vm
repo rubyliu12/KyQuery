@@ -1,0 +1,41 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<form id="bankForm" method="post" resetOnSuccess=false>
+  #if($idCardQueryFailed)
+    <p class="bad notification">$msg.get("DTPQUERY_IDCARD_FAILED")</p>
+  #end
+  #if($errorResponse)
+    <p class="bad notification">$errorResponse</p>
+  #end
+  <h1>$msg.get("ID_VERIFY_HEAD")</h1>
+  <div class="col-lg-6">
+    <label>$msg.get("BANK_NAME")</label>
+    <input type="text" name="name" placeholder="$msg.get("BANK_NAME")" value="$!idVerifyParams.name" required>
+  </div>
+  <div class="col-lg-6">
+    <label>$msg.get("BANK_IDNO")</label>
+    <input type="text" name="idno" placeholder="$msg.get("BANK_IDNO")" value="$!idVerifyParams.idno" required>
+  </div>
+  #if($loginRedirect)
+    <input type="hidden" name="loginRedirect" value="$loginRedirect">
+  #end
+  <input type="submit" value="$msg.get("ID_VERIFY")">
+</form>
+  #if($verifyResutl)
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th colspan="6">$msg.get("ID_STATUS_MSG")</th>
+      <th colspan="6">$msg.get("ID_PHOTO")</th>
+    </tr>
+    </thead>
+  <tbody>
+  <tr>
+    <td colspan="6">$verifyResutl.get("statusMsg")</td>
+    <td colspan="6"><img src=$verifyResult.get("phot")></td>
+    <td colspan="6"><img src='$verifyResult.get("phot")' /></td>
+  </tr>
+  </tbody>
+  </table>
+  #end
+#end

@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
  */
 public class Verification {
   public static boolean is18ByteIdCard(String idCard) {
+
     Pattern pattern1 = Pattern.compile(
         "^(\\d{6})(19|20)(\\d{2})(1[0-2]|0[1-9])(0[1-9]|[1-2][0-9]|3[0-1])(\\d{3})(\\d|X|x)?$");
     Matcher matcher = pattern1.matcher(idCard);
