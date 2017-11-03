@@ -1,11 +1,7 @@
 package app.query.eagle.idverify;
 
-import static app.Application.dtpInfoDao;
 import static app.util.RequestUtil.clientAcceptsHtml;
-import static app.util.RequestUtil.getQueryCardNo;
-import static app.util.RequestUtil.getQueryEmail;
 import static app.util.RequestUtil.getQueryIdNo;
-import static app.util.RequestUtil.getQueryMobile;
 import static app.util.RequestUtil.getQueryName;
 import static app.util.RequestUtil.getSessionCurrentUser;
 
@@ -15,7 +11,6 @@ import app.util.ViewUtil;
 import app.util.database.StorageInfo;
 import app.util.eagle.HttpClient;
 import app.util.tools.Verification;
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.ImmutableMap;
 import java.util.HashMap;
@@ -50,21 +45,22 @@ public class IdVerifyController {
       return ViewUtil.render(request, model, Template.ID_VERIFY_INDEX);
     }
 
-    JSONObject jsonObject = HttpClient.idVerify(getQueryName(request),
-        getQueryIdNo(request));
+    JSONObject jsonObject = HttpClient.idVerify(getQueryName(request), getQueryIdNo(request));
 
     if (Objects.isNull(jsonObject)) {
       model.put("errorResponse", "请联系开发人员");
       return ViewUtil.render(request, model, Template.ID_VERIFY_INDEX);
     }
-    Map<String, Object> rsMap = (Map<String, Object>) JSON.parse(jsonObject.toJSONString());
-    if ("0000".equals(rsMap.get("resCode").toString())) {
-
-      model.put("verifyResult", jsonObject.getJSONObject("data"));
+    JSONObject resultJo = jsonObject.getJSONObject("data");
+    JSONObject result = new JSONObject();
+    if ("0000".equals(jsonObject.getString("resCode"))) {
+      result.put("statusMsg", resultJo.getString("statusMsg"));
+      result.put("photo", Base64ImageUtil.strtoBase64(resultJo.getString("photo")));
+      model.put("verifyResult", result);
       StorageInfo
-          .storageQueryInfo(getSessionCurrentUser(request), getQueryName(request), getQueryIdNo(request), jsonObject.getString("data"));
+          .storageQueryInfo(getSessionCurrentUser(request), getQueryName(request), getQueryIdNo(request), resultJo.getString("statusMsg"));
     } else {
-      model.put("errorResponse", rsMap.get("resMsg").toString());
+      model.put("errorResponse", jsonObject.getString("resMsg"));
     }
     return ViewUtil.render(request, model, Template.ID_VERIFY_INDEX);
   };

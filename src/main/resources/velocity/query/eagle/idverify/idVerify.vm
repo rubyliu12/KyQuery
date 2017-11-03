@@ -21,7 +21,7 @@
   #end
   <input type="submit" value="$msg.get("ID_VERIFY")">
 </form>
-  #if($verifyResutl)
+  #if($verifyResult)
   <table class="table table-bordered table-striped">
     <thead>
     <tr>
@@ -31,9 +31,9 @@
     </thead>
   <tbody>
   <tr>
-    <td colspan="6">$verifyResutl.get("statusMsg")</td>
-    <td colspan="6"><img src=$verifyResult.get("phot")></td>
-    <td colspan="6"><img src='$verifyResult.get("phot")' /></td>
+    <td colspan="6">$verifyResult.getString("statusMsg")</td>
+    <td colspan="6"><img src='data:image/jpeg;base64,$verifyResult.getString("photo")'></td>
+
   </tr>
   </tbody>
   </table>
