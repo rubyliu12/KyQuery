@@ -11,13 +11,14 @@ import app.index.IndexController;
 import app.login.LoginController;
 import app.query.baiqishi.controller.IvsController;
 import app.query.baiqishi.controller.SingleIvsQueryController;
-import app.query.bankflows.AdvancedBankCardFlowsController;
-import app.query.bankflows.BankFlowsQueryController;
-import app.query.bankflows.BankflowsHistoryController;
-import app.query.dtp.DtpInfoDao;
-import app.query.dtp.DtpQueryController;
-import app.query.dtp.DtpQueryHistoryController;
-import app.query.dtp.DtpQueryHistoryDao;
+import app.query.eagle.bankflows.AdvancedBankCardFlowsController;
+import app.query.eagle.bankflows.BankFlowsQueryController;
+import app.query.eagle.bankflows.BankflowsHistoryController;
+import app.query.eagle.dtp.DtpInfoDao;
+import app.query.eagle.dtp.DtpQueryController;
+import app.query.eagle.dtp.DtpQueryHistoryController;
+import app.query.eagle.dtp.DtpQueryHistoryDao;
+import app.query.eagle.idverify.IdVerifyController;
 import app.user.UserDao;
 import app.util.ConfigsCache;
 import app.util.Path;
@@ -77,6 +78,11 @@ public class Application {
     get(Web.ADVANCED_BANKCARD_FLOWS, AdvancedBankCardFlowsController.serverAdvancedBankCardFlows);
     post(Web.ADVANCED_BANKCARD_FLOWS, AdvancedBankCardFlowsController.advancedBankCardFlows);
     post(Path.Web.LOGOUT, LoginController.handleLogoutPost);
+    //身份证验证
+    get(Web.ID_VERIFY, IdVerifyController.indexIdVerify);
+    post(Web.ID_VERIFY, IdVerifyController.idVerify);
+
+
     //白骑士查询
     get(Web.BQS_IVS, IvsController.serverIvsQuery);
     post(Web.BQS_IVS, IvsController.ivsQueryExcel);
