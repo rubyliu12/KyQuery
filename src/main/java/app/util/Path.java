@@ -51,7 +51,7 @@ public class Path {
     public static final String BQS_IVS = "/velocity/query/baiqishi/ivsQuery.vm";
     public static final String BQS_IVS_SINGLE = "/velocity/query/baiqishi/singleIvsQuery.vm";
 
-    public static final String ID_VERIFY_INDEX = "/velocity/query/eagle/idverify/idverify.vm";
+    public static final String ID_VERIFY_INDEX = "/velocity/query/eagle/idverify/idVerify.vm";
   }
 
 }
