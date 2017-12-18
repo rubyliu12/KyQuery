@@ -63,10 +63,10 @@
              aria-haspopup="true" aria-expanded="false">$msg.get("INDEX_SERVICE_PROVIDER_YYX")<span
               class="caret"></span></a>
           <ul class="dropdown-menu">
-##            <li><a href="$WebPath.getBANK_QUERY()">$msg.get("COMMON_NAV__BANK")</a>
-##            </li>
-##            <li><a href="$WebPath.getBANK_QUERY_HISTORY()">$msg.get(
-##              "COMMON_NAV_BANK_HISTORY")</a></li>
+            <li><a href="$WebPath.getBANK_QUERY()">$msg.get("COMMON_NAV__BANK")</a>
+            </li>
+            <li><a href="$WebPath.getBANK_QUERY_HISTORY()">$msg.get(
+              "COMMON_NAV_BANK_HISTORY")</a></li>
             <li><a href="$WebPath.getADVANCED_BANKCARD_FLOWS()">$msg.get(
               "ADVANCED_BANKCARD_FLOWS_QUERY")</a>
             </li>

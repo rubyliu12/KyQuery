@@ -12,8 +12,8 @@ import org.jooq.DSLContext;
  * Created by Yp on 2017/5/17.
  */
 public class StorageInfo {
-  private static ScopedContext scopedContext = new ScopedContext();
-  private static DSLContext create = scopedContext.getDSLContext();
+  private static DbContext dbContext = new DbContext();
+  private static DSLContext create = dbContext.getDSLContext();
 
   public static void storageQueryInfo(String operator, String userName, String idNo, String info) {
     JSONObject infoJson = new JSONObject();

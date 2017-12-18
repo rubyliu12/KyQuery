@@ -24,7 +24,6 @@ import app.util.ConfigsCache;
 import app.util.Path;
 import app.util.Path.Web;
 import app.util.ViewUtil;
-import app.util.requestlog.SparkUtils;
 import app.util.tools.Filters;
 import java.util.Objects;
 import redis.clients.jedis.Jedis;
@@ -46,9 +45,8 @@ public class Application {
     dtpInfoDao = new DtpInfoDao();
     dtpQueryHistoryDao = new DtpQueryHistoryDao();
     //Open RequestLog
-    SparkUtils.createServerWithRequestLog();
     // Configure Spark Port
-    port(4568);
+    port(4567);
     // Configure statcifiles dir
     staticFiles.location("/public");
     staticFiles.expireTime(600L);

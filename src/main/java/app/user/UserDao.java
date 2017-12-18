@@ -1,7 +1,7 @@
 package app.user;
 
 import app.query.generated.tables.KyUserAccess;
-import app.util.database.ScopedContext;
+import app.util.database.DbContext;
 import com.google.common.collect.ImmutableList;
 import java.util.List;
 import java.util.Objects;
@@ -11,8 +11,8 @@ import org.jooq.Record;
 
 public class UserDao {
 
-  private static ScopedContext scopedContext = new ScopedContext();
-  private static DSLContext create = scopedContext.getDSLContext();
+  private static DbContext dbContext = new DbContext();
+  private static DSLContext create = dbContext.getDSLContext();
   private final List<User> users = ImmutableList.of(
       //        Username    Salt for hash                    Hashed password (the password is "password" for all users)
       new User("perwendel", "$2a$10$h.dl5J86rGH7I8bD9bZeZe",

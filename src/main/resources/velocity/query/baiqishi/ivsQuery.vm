@@ -33,7 +33,7 @@
       <tr>
         #foreach($r in $rs.values())
           <td>
-            $r
+            $!r
           </td>
         #end
       </tr>

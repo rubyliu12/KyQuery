@@ -1,7 +1,7 @@
 package app.query.eagle.bankflows;
 
 import app.query.generated.tables.KyBankflowsLogs;
-import app.util.database.ScopedContext;
+import app.util.database.DbContext;
 import com.alibaba.fastjson.JSONArray;
 import java.util.List;
 import org.jooq.DSLContext;
@@ -13,8 +13,8 @@ import org.jooq.Result;
  */
 public class BankflowsHistoryDao {
 
-  private static ScopedContext scopedContext = new ScopedContext();
-  private static DSLContext create = scopedContext.getDSLContext();
+  private static DbContext dbContext = new DbContext();
+  private static DSLContext create = dbContext.getDSLContext();
 
   public Result<Record> getHistoryByUser(String currentUser) {
     return create.select().from(KyBankflowsLogs.KY_BANKFLOWS_LOGS)

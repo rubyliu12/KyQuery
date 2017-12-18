@@ -1,7 +1,7 @@
 package app.query.eagle.dtp;
 
 import app.query.generated.tables.KyQueryLogs;
-import app.util.database.ScopedContext;
+import app.util.database.DbContext;
 import com.alibaba.fastjson.JSONObject;
 import org.jooq.DSLContext;
 import org.jooq.Record;
@@ -12,8 +12,8 @@ import org.jooq.Result;
  */
 public class DtpQueryHistoryDao {
 
-  private static ScopedContext scopedContext = new ScopedContext();
-  private static DSLContext create = scopedContext.getDSLContext();
+  private static DbContext dbContext = new DbContext();
+  private static DSLContext create = dbContext.getDSLContext();
 
   public Result<Record> getHistoryByUser(String currentUser) {
     return create.select().from(KyQueryLogs.KY_QUERY_LOGS)
