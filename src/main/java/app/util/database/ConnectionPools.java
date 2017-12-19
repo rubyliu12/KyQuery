@@ -16,20 +16,26 @@ public class ConnectionPools {
   private static final Config conf = new Configs.Builder()
       .withResource("configs/pools.conf")
       .build();
+
   /*
    *  This pool is made for short quick transactions that the web application uses.
    *  Using enum singleton pattern for lazy singletons
    */
   private enum Transactional {
-    INSTANCE(ConnectionPool.getDataSourceFromConfig(conf.getConfig("pools.transactional"), Metrics.registry(), HealthChecks.getHealthCheckRegistry()));
+    INSTANCE(ConnectionPool
+        .getDataSourceFromConfig(conf.getConfig("pools.transactional"), Metrics.registry(),
+            HealthChecks.getHealthCheckRegistry()));
     private final DataSource dataSource;
+
     private Transactional(DataSource dataSource) {
       this.dataSource = dataSource;
     }
+
     public DataSource getDataSource() {
       return dataSource;
     }
   }
+
   public static DataSource getTransactional() {
     return Transactional.INSTANCE.getDataSource();
   }
@@ -49,11 +55,15 @@ public class ConnectionPools {
    *  run while the other pool is backed up.
    */
   private enum Processing {
-    INSTANCE(ConnectionPool.getDataSourceFromConfig(conf.getConfig("pools.processing"), Metrics.registry(), HealthChecks.getHealthCheckRegistry()));
+    INSTANCE(ConnectionPool
+        .getDataSourceFromConfig(conf.getConfig("pools.processing"), Metrics.registry(),
+            HealthChecks.getHealthCheckRegistry()));
     private final DataSource dataSource;
+
     private Processing(DataSource dataSource) {
       this.dataSource = dataSource;
     }
+
     public DataSource getDataSource() {
       return dataSource;
     }

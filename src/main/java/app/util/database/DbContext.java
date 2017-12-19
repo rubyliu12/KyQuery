@@ -1,22 +1,40 @@
 package app.util.database;
 
-import org.jooq.Configuration;
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 import org.jooq.impl.DefaultConfiguration;
 
 public class DbContext {
-  private DSLContext dslContext = null;
 
-  public DSLContext getDSLContext() {
-    if (dslContext == null) {
-      Configuration defaultConfiguration =
-          new DefaultConfiguration().set(ConnectionPools.getTransactional()).set(SQLDialect.MYSQL);
+  //private DSLContext dslContext = null;
+  //
+  //public DSLContext getDSLContext() {
+  //  if (dslContext == null) {
+  //    Configuration defaultConfiguration =
+  //        new DefaultConfiguration().set(ConnectionPools.getProcessing()).set(SQLDialect.MYSQL);
+  //
+  //    dslContext = DSL.using(defaultConfiguration);
+  //  }
+  //
+  //  return dslContext;
+  //}
 
-      dslContext = DSL.using(defaultConfiguration);
+  private enum ScopeContext {
+    INSTANCE(DSL.using(new DefaultConfiguration().set(ConnectionPools.getProcessing()).set(SQLDialect.MYSQL)));
+
+    private final DSLContext dslContext;
+
+    private ScopeContext(DSLContext dslContext) {
+      this.dslContext = dslContext;
     }
 
-    return dslContext;
+    public DSLContext getDslContext() {
+      return dslContext;
+    }
+  }
+
+  public static DSLContext getDSLContext() {
+    return ScopeContext.INSTANCE.getDslContext();
   }
 }

@@ -7,9 +7,11 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 public class ConnectionPool {
+
   private ConnectionPool() {
 
   }
+
   /*
    * Expects a config in the following format
    *
@@ -27,9 +29,7 @@ public class ConnectionPool {
    * Let HikariCP bleed out here on purpose
    */
   public static HikariDataSource getDataSourceFromConfig(
-      Config conf
-      , MetricRegistry metricRegistry
-      , HealthCheckRegistry healthCheckRegistry) {
+      Config conf, MetricRegistry metricRegistry, HealthCheckRegistry healthCheckRegistry) {
 
     HikariConfig jdbcConfig = new HikariConfig();
     jdbcConfig.setPoolName(conf.getString("poolName"));
