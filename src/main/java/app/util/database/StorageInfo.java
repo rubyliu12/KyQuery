@@ -13,7 +13,7 @@ import org.jooq.DSLContext;
  */
 public class StorageInfo {
   private static DbContext dbContext = new DbContext();
-  private static DSLContext create = dbContext.getDSLContext();
+  private static DSLContext create = dbContext.getDslContext();
 
   public static void storageQueryInfo(String operator, String userName, String idNo, String info) {
     JSONObject infoJson = new JSONObject();

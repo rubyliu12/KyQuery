@@ -11,7 +11,7 @@ import org.jooq.Record;
 
 public class UserDao {
 
-  private static DSLContext create = DbContext.getDSLContext();
+  private static DSLContext create = DbContext.getDslContext();
   private final List<User> users = ImmutableList.of(
       //        Username    Salt for hash                    Hashed password (the password is "password" for all users)
       new User("perwendel", "$2a$10$h.dl5J86rGH7I8bD9bZeZe",

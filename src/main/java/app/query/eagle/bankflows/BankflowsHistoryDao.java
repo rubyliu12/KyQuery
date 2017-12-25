@@ -13,7 +13,7 @@ import org.jooq.Result;
  */
 public class BankflowsHistoryDao {
 
-  private static DSLContext create = DbContext.getDSLContext();
+  private static DSLContext create = DbContext.getDslContext();
 
   public Result<Record> getHistoryByUser(String currentUser) {
     return create.select().from(KyBankflowsLogs.KY_BANKFLOWS_LOGS)

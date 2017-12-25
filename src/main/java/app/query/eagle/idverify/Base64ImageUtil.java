@@ -15,9 +15,11 @@ import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 public class Base64ImageUtil {
+
   // 图片转化成base64字符串
-  public static String getImageStr(String imgFile) {// 将图片文件转化为字节数组字符串，并对其进行Base64编码处理
-//		String imgFile = "C:\\Users\\Administrator\\Desktop\\1_hfhwfw.jpg";// 待处理的图片
+  public static String getImageStr(String imgFile) {
+    // 将图片文件转化为字节数组字符串，并对其进行Base64编码处理
+    //		String imgFile = "C:\\Users\\Administrator\\Desktop\\1_hfhwfw.jpg";// 待处理的图片
     InputStream in = null;
     byte[] data = null;
     // 读取图片字节数组
@@ -35,9 +37,12 @@ public class Base64ImageUtil {
   }
 
   // base64字符串转化成图片
-  public static String generateImage(String imgStr, String imagePath, HttpServletRequest req) { // 对字节数组字符串进行Base64解码并生成图片
+  public static String generateImage(String imgStr, String imagePath,
+      HttpServletRequest req) { // 对字节数组字符串进行Base64解码并生成图片
     if (imgStr == null) // 图像数据为空
+    {
       return null;
+    }
     String rootpath = req.getSession().getServletContext().getRealPath("/");
     String file = "a" + File.separator + "images" + File.separator + imagePath;
 
@@ -60,17 +65,20 @@ public class Base64ImageUtil {
       return null;
     }
   }
+
   /**
-   *
    * base64StringtoImage:用于处理优分身份核查肖像图片.
    *
    * @author yangliu
    * @date 2016年8月19日
    * @since JDK 1.8
    */
-  public static String base64StringtoImage(String imgStr, String imagePath, HttpServletRequest req){
+  public static String base64StringtoImage(String imgStr, String imagePath,
+      HttpServletRequest req) {
     if (imgStr == null) // 图像数据为空
+    {
       return null;
+    }
     String rootpath = req.getSession().getServletContext().getRealPath("/");
     String file = "a" + File.separator + "images" + File.separator + imagePath;
 
@@ -92,12 +100,12 @@ public class Base64ImageUtil {
 
   /**
    * result photo str to base64 and can direct display in html
-   * @param imgStr
-   * @return
    */
   public static String strtoBase64(String imgStr) {
     if (imgStr == null) // 图像数据为空
+    {
       return "";
+    }
 
     try {
       BASE64Decoder decoder = new BASE64Decoder();

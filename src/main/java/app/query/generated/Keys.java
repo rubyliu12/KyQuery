@@ -48,7 +48,7 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<KyBankflowsLogsRecord> KEY_KY_BANKFLOWS_LOGS_PRIMARY = UniqueKeys0.KEY_KY_BANKFLOWS_LOGS_PRIMARY;
-    public static final UniqueKey<KyBankflowsLogsRecord> KEY_KY_BANKFLOWS_LOGS_IDNO = UniqueKeys0.KEY_KY_BANKFLOWS_LOGS_IDNO;
+    public static final UniqueKey<KyBankflowsLogsRecord> KEY_KY_BANKFLOWS_LOGS_ID = UniqueKeys0.KEY_KY_BANKFLOWS_LOGS_ID;
     public static final UniqueKey<KyQueryLogsRecord> KEY_KY_QUERY_LOGS_PRIMARY = UniqueKeys0.KEY_KY_QUERY_LOGS_PRIMARY;
     public static final UniqueKey<KyQueryLogsRecord> KEY_KY_QUERY_LOGS_IDNO = UniqueKeys0.KEY_KY_QUERY_LOGS_IDNO;
     public static final UniqueKey<KyUserAccessRecord> KEY_KY_USER_ACCESS_PRIMARY = UniqueKeys0.KEY_KY_USER_ACCESS_PRIMARY;
@@ -72,7 +72,7 @@ public class Keys {
 
     private static class UniqueKeys0 extends AbstractKeys {
         public static final UniqueKey<KyBankflowsLogsRecord> KEY_KY_BANKFLOWS_LOGS_PRIMARY = createUniqueKey(KyBankflowsLogs.KY_BANKFLOWS_LOGS, "KEY_ky_bankflows_logs_PRIMARY", KyBankflowsLogs.KY_BANKFLOWS_LOGS.ID);
-        public static final UniqueKey<KyBankflowsLogsRecord> KEY_KY_BANKFLOWS_LOGS_IDNO = createUniqueKey(KyBankflowsLogs.KY_BANKFLOWS_LOGS, "KEY_ky_bankflows_logs_idno", KyBankflowsLogs.KY_BANKFLOWS_LOGS.IDNO);
+        public static final UniqueKey<KyBankflowsLogsRecord> KEY_KY_BANKFLOWS_LOGS_ID = createUniqueKey(KyBankflowsLogs.KY_BANKFLOWS_LOGS, "KEY_ky_bankflows_logs_id", KyBankflowsLogs.KY_BANKFLOWS_LOGS.ID);
         public static final UniqueKey<KyQueryLogsRecord> KEY_KY_QUERY_LOGS_PRIMARY = createUniqueKey(KyQueryLogs.KY_QUERY_LOGS, "KEY_ky_query_logs_PRIMARY", KyQueryLogs.KY_QUERY_LOGS.ID);
         public static final UniqueKey<KyQueryLogsRecord> KEY_KY_QUERY_LOGS_IDNO = createUniqueKey(KyQueryLogs.KY_QUERY_LOGS, "KEY_ky_query_logs_idno", KyQueryLogs.KY_QUERY_LOGS.IDNO);
         public static final UniqueKey<KyUserAccessRecord> KEY_KY_USER_ACCESS_PRIMARY = createUniqueKey(KyUserAccess.KY_USER_ACCESS, "KEY_ky_user_access_PRIMARY", KyUserAccess.KY_USER_ACCESS.ID);

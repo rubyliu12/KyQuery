@@ -55,8 +55,10 @@ public class DtpQueryController {
     if ("0000".equals(rsMap.get("resCode").toString())) {
 
       model.put("dtpInfo",
-          dtpInfoDao.toDtpInfo(getQueryName(request), getQueryIdNo(request), jsonObject.getJSONObject("data")));
-      StorageInfo.storageQueryInfo(getSessionCurrentUser(request), getQueryName(request), getQueryIdNo(request), jsonObject.getString("data"));
+          dtpInfoDao.toDtpInfo(getQueryName(request), getQueryIdNo(request),
+              jsonObject.getJSONObject("data")));
+      StorageInfo.storageQueryInfo(getSessionCurrentUser(request), getQueryName(request),
+          getQueryIdNo(request), jsonObject.getString("data"));
     } else {
       model.put("errorResponse", rsMap.get("resMsg").toString());
     }

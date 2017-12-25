@@ -1,6 +1,6 @@
 package app.util.eagle;
 
-import app.util.ConfigsCache;
+import app.util.RedisInitialize;
 import app.util.tools.ConfigUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Strings;
@@ -17,7 +17,7 @@ import redis.clients.jedis.Jedis;
 public class HttpClient {
 
   private static ConfigUtil configUtil = ConfigUtil.getInstance();
-  private static Jedis jedis = ConfigsCache.INSTANCE.init();
+  private static Jedis jedis = RedisInitialize.getJedisResource();
 
   /**
    * 登录 login:API登陆样例. <br/>

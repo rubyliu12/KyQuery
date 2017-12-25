@@ -30,9 +30,9 @@ public class AdvancedBankCardFlowsParameter {
   }
 
   public Map<String,String> toMap() {
-    ObjectMapper oMapper = new ObjectMapper();
-    oMapper.setSerializationInclusion(Include.NON_NULL);
-    oMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
-    return oMapper.convertValue(this, Map.class);
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.setSerializationInclusion(Include.NON_NULL);
+    objectMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
+    return objectMapper.convertValue(this, Map.class);
   }
 }

@@ -18,6 +18,7 @@ import spark.Route;
  * Created by Yp on 2017/5/17.
  */
 public class DtpQueryHistoryController {
+
   public static Route serverQueryHistory = (Request request, Response response) -> {
     LoginController.ensureUserIsLoggedIn(request, response);
     if (clientAcceptsHtml(request)) {
@@ -32,7 +33,8 @@ public class DtpQueryHistoryController {
     LoginController.ensureUserIsLoggedIn(request, response);
     if (clientAcceptsHtml(request)) {
       HashMap<String, Object> model = new HashMap<>();
-      model.put("historyDetail", dtpQueryHistoryDao.getDtpInfoByIdNo(getId(request), getIdNo(request)));
+      model.put("historyDetail",
+          dtpQueryHistoryDao.getDtpInfoByIdNo(getId(request), getIdNo(request)));
       return ViewUtil.render(request, model, Template.DTP_QUERY_HISTORY_DETAIL);
     }
     return ViewUtil.notAcceptable.handle(request, response);

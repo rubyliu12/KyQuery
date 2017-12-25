@@ -17,13 +17,15 @@ import spark.Route;
  * Created by Yp on 2017/5/22.
  */
 public class BankflowsHistoryController {
+
   private static BankflowsHistoryDao bankflowsHistoryDao = new BankflowsHistoryDao();
   public static Route serverQueryHistory = (Request request, Response response) -> {
     LoginController.ensureUserIsLoggedIn(request, response);
 
     if (clientAcceptsHtml(request)) {
       HashMap<String, Object> model = new HashMap<>();
-      model.put("bankflowsHistoryList", bankflowsHistoryDao.getHistoryByUser(getSessionCurrentUser(request)));
+      model.put("bankflowsHistoryList",
+          bankflowsHistoryDao.getHistoryByUser(getSessionCurrentUser(request)));
       return ViewUtil.render(request, model, Template.BANK_QUERY_HISTORY);
     }
     return ViewUtil.notAcceptable.handle(request, response);
@@ -33,7 +35,8 @@ public class BankflowsHistoryController {
     LoginController.ensureUserIsLoggedIn(request, response);
     if (clientAcceptsHtml(request)) {
       HashMap<String, Object> model = new HashMap<>();
-      model.put("bankflowsList", bankflowsHistoryDao.getBankflowsByIdNo(getId(request), getIdNo(request)));
+      model.put("bankflowsList",
+          bankflowsHistoryDao.getBankflowsByIdNo(getId(request), getIdNo(request)));
       return ViewUtil.render(request, model, Template.BANK_QUERY_HISTORY_DETAIL);
     }
     return ViewUtil.notAcceptable.handle(request, response);

@@ -9,7 +9,7 @@ public class DbContext {
 
   //private DSLContext dslContext = null;
   //
-  //public DSLContext getDSLContext() {
+  //public DSLContext getDslContext() {
   //  if (dslContext == null) {
   //    Configuration defaultConfiguration =
   //        new DefaultConfiguration().set(ConnectionPools.getProcessing()).set(SQLDialect.MYSQL);
@@ -21,7 +21,8 @@ public class DbContext {
   //}
 
   private enum ScopeContext {
-    INSTANCE(DSL.using(new DefaultConfiguration().set(ConnectionPools.getProcessing()).set(SQLDialect.MYSQL)));
+    INSTANCE(DSL.using(
+        new DefaultConfiguration().set(ConnectionPools.getProcessing()).set(SQLDialect.MYSQL)));
 
     private final DSLContext dslContext;
 
@@ -34,7 +35,7 @@ public class DbContext {
     }
   }
 
-  public static DSLContext getDSLContext() {
+  public static DSLContext getDslContext() {
     return ScopeContext.INSTANCE.getDslContext();
   }
 }

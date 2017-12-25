@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Configs {
+
   private static final Logger log = LoggerFactory.getLogger(Configs.class);
   /*
    * I am letting the typesafe configs bleed out on purpose here.
@@ -38,6 +39,7 @@ public class Configs {
   }
 
   public static class Builder {
+
     private Config conf;
 
     public Builder() {
@@ -75,7 +77,8 @@ public class Configs {
       // Resolve substitutions.
       conf = conf.resolve();
       if (log.isDebugEnabled()) {
-        log.debug("Logging properties. Make sure sensitive data such as passwords or secrets are not logged!");
+        log.debug(
+            "Logging properties. Make sure sensitive data such as passwords or secrets are not logged!");
         log.debug(conf.root().render(ConfigRenderOptions.concise().setFormatted(true)));
       }
       return conf;

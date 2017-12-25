@@ -35,7 +35,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class KyBankflowsLogs extends TableImpl<KyBankflowsLogsRecord> {
 
-    private static final long serialVersionUID = -179704737;
+    private static final long serialVersionUID = -53027904;
 
     /**
      * The reference instance of <code>keyirisk.ky_bankflows_logs</code>
@@ -136,7 +136,7 @@ public class KyBankflowsLogs extends TableImpl<KyBankflowsLogsRecord> {
      */
     @Override
     public List<UniqueKey<KyBankflowsLogsRecord>> getKeys() {
-        return Arrays.<UniqueKey<KyBankflowsLogsRecord>>asList(Keys.KEY_KY_BANKFLOWS_LOGS_PRIMARY, Keys.KEY_KY_BANKFLOWS_LOGS_IDNO);
+        return Arrays.<UniqueKey<KyBankflowsLogsRecord>>asList(Keys.KEY_KY_BANKFLOWS_LOGS_PRIMARY, Keys.KEY_KY_BANKFLOWS_LOGS_ID);
     }
 
     /**

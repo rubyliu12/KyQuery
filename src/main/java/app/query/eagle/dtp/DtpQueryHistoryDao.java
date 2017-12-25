@@ -12,7 +12,7 @@ import org.jooq.Result;
  */
 public class DtpQueryHistoryDao {
 
-  private static DSLContext create = DbContext.getDSLContext();
+  private static DSLContext create = DbContext.getDslContext();
 
   public Result<Record> getHistoryByUser(String currentUser) {
     return create.select().from(KyQueryLogs.KY_QUERY_LOGS)
