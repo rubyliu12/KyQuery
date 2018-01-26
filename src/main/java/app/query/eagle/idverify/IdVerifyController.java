@@ -54,11 +54,11 @@ public class IdVerifyController {
     JSONObject resultJo = jsonObject.getJSONObject("data");
     JSONObject result = new JSONObject();
     if ("0000".equals(jsonObject.getString("resCode"))) {
-      result.put("statusMsg", resultJo.getString("statusMsg"));
-      result.put("photo", Base64ImageUtil.strtoBase64(resultJo.getString("photo")));
+      result.put("message", resultJo.getString("message"));
+      result.put("photo", Base64ImageUtil.strtoBase64(resultJo.getString("idcardphoto")));
       model.put("verifyResult", result);
       StorageInfo
-          .storageQueryInfo(getSessionCurrentUser(request), getQueryName(request), getQueryIdNo(request), resultJo.getString("statusMsg"));
+          .storageQueryInfo(getSessionCurrentUser(request), getQueryName(request), getQueryIdNo(request), resultJo.getString("message"));
     } else {
       model.put("errorResponse", jsonObject.getString("resMsg"));
     }

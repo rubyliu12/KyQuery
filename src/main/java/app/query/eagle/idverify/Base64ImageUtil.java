@@ -1,5 +1,6 @@
 package app.query.eagle.idverify;
 
+import com.google.common.base.Strings;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -102,8 +103,7 @@ public class Base64ImageUtil {
    * result photo str to base64 and can direct display in html
    */
   public static String strtoBase64(String imgStr) {
-    if (imgStr == null) // 图像数据为空
-    {
+    if (Strings.isNullOrEmpty(imgStr)) {// 图像数据为空
       return "";
     }
 

@@ -8,6 +8,7 @@ import java.io.StringWriter;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class JsonUtil {
 
@@ -23,8 +24,8 @@ public class JsonUtil {
     }
   }
 
-  @SuppressWarnings("unchecked")
   public static Map<String, Object> toMap(Object object) {
+    Objects.requireNonNull(object);
     Gson gson = new Gson();
     Map<String, Object> map = new HashMap<>();
     map = gson.fromJson(gson.toJson(object), map.getClass());

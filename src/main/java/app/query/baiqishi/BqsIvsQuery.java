@@ -52,6 +52,7 @@ public class BqsIvsQuery {
    */
   public static String ivsQuery(BqsIvsQueryParameters bp) {
     String result = null;
+    Invoker.init();
     //BqsIvsQueryParameters Object to Map
     Map<String, Object> query = JsonUtil.toMap(bp);
     try {

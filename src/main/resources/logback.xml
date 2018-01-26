@@ -1,19 +1,36 @@
 <!-- // {{start:logback}}  -->
 <!-- turn debug=true on for logback-test.xml to help debug logging configurations. -->
 <configuration debug="false">
-  <timestamp key="byDate" datePattern="yyyyMMdd"/>
-  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>src/main/resources/logs/logFile.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <fileNamePattern>src/main/resources/logs/logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
 
-    <file>src/main/resources/logs/log-${byDate}.log</file>
-    <append>true</append>
-    <!-- set immediateFlush to false for much higher logging throughput -->
-    <immediateFlush>true</immediateFlush>
-    <!-- encoders are assigned the type
-         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+      <!-- keep 30 days' worth of history capped at 3GB total size -->
+      <maxHistory>1</maxHistory>
+      <totalSizeCap>1GB</totalSizeCap>
+
+    </rollingPolicy>
+
     <encoder>
-      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
     </encoder>
   </appender>
+
+  <!--<timestamp key="byDate" datePattern="yyyyMMdd"/>-->
+  <!--<appender name="FILE" class="ch.qos.logback.core.FileAppender">-->
+
+    <!--<file>src/main/resources/logs/log-${byDate}.log</file>-->
+    <!--<append>true</append>-->
+    <!--&lt;!&ndash; set immediateFlush to false for much higher logging throughput &ndash;&gt;-->
+    <!--<immediateFlush>true</immediateFlush>-->
+    <!--&lt;!&ndash; encoders are assigned the type-->
+         <!--ch.qos.logback.classic.encoder.PatternLayoutEncoder by default &ndash;&gt;-->
+    <!--<encoder>-->
+      <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
+    <!--</encoder>-->
+  <!--</appender>-->
   <!--
   We prefer logging to console instead of a File. Its very easy
   to pipe console output to a file and most organizations already
@@ -72,7 +89,7 @@
   <logger name="com.zaxxer.hikari" level="DEBUG" />
   
   <!-- Turn on debug logging for all loggers under com.stubbornjava -->
-  <logger name="app" level="INFO" />
+  <logger name="app" level="DEBUG" />
   
   <!--
   Assume we have a com.stubbornjava.secrets.MySecretPasswordClass.Java class.
